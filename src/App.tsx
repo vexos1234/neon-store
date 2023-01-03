@@ -14,6 +14,18 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+  Routes,
+  Router,
+} from "react-router-dom";
+import About from "./Components/About";
+import Home from "./Components/Home";
+import Pricing from "./Components/Pricing";
+import Navbar from "./navbar";
 
 interface IProduct {
   title: string;
@@ -23,12 +35,37 @@ interface IProduct {
   price: number;
 }
 
+
 function App() {
+
   const [products, setProducts] = useState<IProduct[]>([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("https://fakestoreapi.com/products");
+      setProducts(data);
+    };
+
+    fetchData();
+  }, []);
+
+  const handleClick = () => {
+    console.log('hello hello');
+  }
+
+  <div className="App">
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/About" element={<About />} />
+      </Routes>
+    </Router>  
+  </div>
 
   return (
     <Container>
+        <Navbar />
       <Heading>Productos</Heading>
 
       <SimpleGrid columns={2} gap={4}>
@@ -56,7 +93,7 @@ function App() {
             <Divider />
             <CardFooter>
               <ButtonGroup spacing="2">
-                <Button variant="solid" colorScheme="blue">
+                <Button onClick={handleClick} variant="solid" colorScheme="blue">
                   Buy now
                 </Button>
                 <Button variant="ghost" colorScheme="blue">
