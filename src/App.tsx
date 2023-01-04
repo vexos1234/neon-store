@@ -25,87 +25,28 @@ import {
 import About from "./Components/About";
 import Home from "./Components/Home";
 import Pricing from "./Components/Pricing";
+import { Product } from "./Components/Product";
 import Navbar from "./navbar";
 
-interface IProduct {
-  title: string;
-  description: string;
-  id: number;
-  image: string;
-  price: number;
-}
+
 
 
 function App() {
 
-  const [products, setProducts] = useState<IProduct[]>([]);
+  return (
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get("https://fakestoreapi.com/products");
-      setProducts(data);
-    };
-
-    fetchData();
-  }, []);
-
-  const handleClick = () => {
-    console.log('hello hello');
-  }
-
-  <div className="App">
-    <Router>
+    <div className="App">
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/About" element={<About />} />
+        <Route path='/product/:id' element={<Product />} />
       </Routes>
-    </Router>  
-  </div>
 
-  return (
-    <Container>
-        <Navbar />
-      <Heading>Productos</Heading>
-
-      <SimpleGrid columns={2} gap={4}>
-        {products.map((product) => (
-          <Card maxW="sm">
-            <CardBody>
-              <Image
-                src={product.image}
-                alt="Green double couch with wooden legs"
-                borderRadius="lg"
-                width="100%"
-                height="250px"
-                objectFit="cover"
-              />
-              <Stack mt="6" spacing="3">
-                <Heading size="md">{product.title}</Heading>
-                <Text maxHeight="250px" overflowY="scroll">
-                  {product.description}
-                </Text>
-                <Text color="blue.600" fontSize="2xl">
-                  {product.price}
-                </Text>
-              </Stack>
-            </CardBody>
-            <Divider />
-            <CardFooter>
-              <ButtonGroup spacing="2">
-                <Button onClick={handleClick} variant="solid" colorScheme="blue">
-                  Buy now
-                </Button>
-                <Button variant="ghost" colorScheme="blue">
-                  Add to cart
-                </Button>
-              </ButtonGroup>
-            </CardFooter>
-          </Card>
-        ))}
-      </SimpleGrid>
-    </Container>
-  );
+    </div>
+  )
 }
+   
 
 export default App;
