@@ -4,7 +4,7 @@ import {
   useParams,
 } from "react-router-dom";
 import axios from "axios";
-
+import { Flex, Spacer, Center, Box } from '@chakra-ui/react'
 
 export const Product = () => {
 
@@ -34,15 +34,24 @@ export const Product = () => {
     }
 
   if (!product) return (
-    <CircularProgress isIndeterminate color='green.300' />
+    <Container>
+      <Box mt={250} ml={50}>
+        <Center w='100px'>
+          <Flex>
+            <CircularProgress isIndeterminate color='blue.300' />        
+          </Flex>
+        </Center>
+      </Box>
+
+
+    </Container>
+
   );
 
 
   return (
-
     
     <Container>
-      <Heading>Producto</Heading>
         <SimpleGrid columns={2} gap={4}>
             <Card maxW="sm">
                 <CardBody>
@@ -53,7 +62,7 @@ export const Product = () => {
                     height="250px"
                     objectFit="cover"
                 />
-                <Stack mt="6" spacing="3">
+                
                     <Heading size="md">{product.title}</Heading>
                     <Text maxHeight="250px" overflowY="scroll">
                     {product.description}
@@ -61,7 +70,7 @@ export const Product = () => {
                     <Text color="blue.600" fontSize="2xl">
                     {product.price}
                     </Text>
-                </Stack>
+
                 </CardBody>
                 <Divider />
                 <CardFooter>
