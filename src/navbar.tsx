@@ -21,6 +21,8 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import { Product } from './Components/Product';
+import Home from './Components/Home';
 
 export default function NavBar() {
   const { isOpen, onToggle } = useDisclosure();
@@ -255,7 +257,7 @@ const NAV_ITEMS: Array<NavItem> = [
       {
         label: 'Explore Design Work',
         subLabel: 'Trending Design to inspire you',
-        href: '#',
+        Link to: '/Home' + Home,
       },
       {
         label: 'New & Noteworthy',
