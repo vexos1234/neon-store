@@ -90,10 +90,11 @@ export default function NavBar() {
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
+                <MenuItem>Profile</MenuItem>
                 <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
+                <MenuItem>My Orders</MenuItem>
+                <MenuDivider />
+                <MenuItem>Log Out</MenuItem>
               </MenuList>
             </Menu>
           </Flex>

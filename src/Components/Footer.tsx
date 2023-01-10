@@ -14,6 +14,8 @@ import {
   import { ReactNode } from 'react';
   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
   import { BiMailSend } from 'react-icons/bi';
+  import About from './About';
+  import { Link as RouterLink } from "react-router-dom";
   
   const Logo = (props: any) => {
     return (
@@ -87,7 +89,7 @@ import {
                 <Logo color={useColorModeValue('gray.700', 'white')} />
               </Box>
               <Text fontSize={'sm'}>
-                © 2022 Chakra Templates. All rights reserved
+                © 2022 King Cobra Neon. All rights reserved
               </Text>
               <Stack direction={'row'} spacing={6}>
                 <SocialButton label={'Twitter'} href={'#'}>
@@ -103,10 +105,10 @@ import {
             </Stack>
             <Stack align={'flex-start'}>
               <ListHeader>Company</ListHeader>
-              <Link href={'#'}>About us</Link>
+              <Link as={RouterLink} to="/About"> About us </Link>
               <Link href={'#'}>Blog</Link>
               <Link href={'#'}>Contact us</Link>
-              <Link href={'#'}>Pricing</Link>
+              <Link as={RouterLink} to="/Pricing">Pricing</Link>
               <Link href={'#'}>Testimonials</Link>
             </Stack>
             <Stack align={'flex-start'}>
